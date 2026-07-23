@@ -2,6 +2,14 @@
 
 set -euo pipefail
 
+if [[ ! -x collector.sh ]]; then
+    chmod +x collector.sh
+fi
+
+if [[ ! -x analyze.sh ]]; then
+    chmod +x analyze.sh
+fi
+
 SERVICE_NAME="latency-collector"
 SYSTEMD_DIR="/etc/systemd/system"
 
