@@ -20,8 +20,8 @@ echo "Installing ${SERVICE_NAME}..."
 echo "Project directory : ${PROJECT_DIR}"
 echo "User              : ${CURRENT_USER}"
 
-#cat > /tmp/${SERVICE_NAME}.service <<EOF
-cat > "${PROJECT_DIR}/${SERVICE_NAME}.service" <<EOF
+#cat > "${PROJECT_DIR}/${SERVICE_NAME}.service" <<EOF
+cat > /tmp/${SERVICE_NAME}.service <<EOF
 [Unit]
 Description=Network Latency Collector
 After=network-online.target
@@ -45,13 +45,13 @@ StandardError=append:${PROJECT_DIR}/collector.log
 WantedBy=multi-user.target
 EOF
 
-#sudo install -m 644 /tmp/${SERVICE_NAME}.service \
-#    ${SYSTEMD_DIR}/${SERVICE_NAME}.service
+sudo install -m 644 /tmp/${SERVICE_NAME}.service \
+    ${SYSTEMD_DIR}/${SERVICE_NAME}.service
 
 #rm /tmp/${SERVICE_NAME}.service
 
-sudo ln -sf "${PROJECT_DIR}/${SERVICE_NAME}.service" \
-        /etc/systemd/system/${SERVICE_NAME}.service
+#sudo ln -sf "${PROJECT_DIR}/${SERVICE_NAME}.service" \
+#        /etc/systemd/system/${SERVICE_NAME}.service
         
 sudo systemctl daemon-reload
 sudo systemctl enable ${SERVICE_NAME}
