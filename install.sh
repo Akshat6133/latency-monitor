@@ -50,7 +50,7 @@ EOF
 
 #rm /tmp/${SERVICE_NAME}.service
 
-sudo ln "${PROJECT_DIR}/${SERVICE_NAME}.service" \
+sudo ln -sf "${PROJECT_DIR}/${SERVICE_NAME}.service" \
         /etc/systemd/system/${SERVICE_NAME}.service
         
 sudo systemctl daemon-reload
